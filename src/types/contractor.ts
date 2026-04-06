@@ -15,4 +15,5 @@ export interface Contractor {
   logo_url?: string
   is_featured: boolean
   is_active: boolean
+  created_at?: string
 }
