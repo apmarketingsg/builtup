@@ -1,9 +1,29 @@
 import Link from 'next/link'
 import { TRADES } from '@/constants/trades'
-import { FEATURED_CONTRACTORS } from '@/data/mockContractors'
+import { FEATURED_CONTRACTORS as MOCK_FEATURED } from '@/data/mockContractors'
 import ContractorCard from '@/components/contractors/ContractorCard'
+import { createClient } from '@/lib/supabase/server'
+import type { Contractor } from '@/types/contractor'
 
-export default function HomePage() {
+async function getFeaturedContractors(): Promise<Contractor[]> {
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL) return MOCK_FEATURED
+
+  const supabase = await createClient()
+  const { data, error } = await supabase
+    .from('contractors')
+    .select('*')
+    .eq('is_active', true)
+    .eq('is_featured', true)
+    .order('name')
+    .limit(6)
+
+  if (error || !data?.length) return MOCK_FEATURED
+  return data as Contractor[]
+}
+
+export default async function HomePage() {
+  const featured = await getFeaturedContractors()
+
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────────────────── */}
@@ -171,7 +191,7 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {FEATURED_CONTRACTORS.map((contractor) => (
+            {featured.map((contractor) => (
               <ContractorCard key={contractor.id} contractor={contractor} />
             ))}
           </div>
