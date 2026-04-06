@@ -20,16 +20,27 @@ CREATE TABLE contractors (
   is_active     BOOLEAN     NOT NULL DEFAULT true,
   created_at    TIMESTAMPTZ NOT NULL DEFAULT now(),
   updated_at    TIMESTAMPTZ NOT NULL DEFAULT now(),
-  -- Generated full-text search column (do not insert into this column directly)
-  search_vector TSVECTOR GENERATED ALWAYS AS (
-    to_tsvector('english'::regconfig,
-      coalesce(name, '') || ' ' ||
-      coalesce(trade, '') || ' ' ||
-      coalesce(description, '') || ' ' ||
-      coalesce(array_to_string(specialties, ' '), '')
-    )
-  ) STORED
+  search_vector TSVECTOR
 );
+
+-- Trigger function: keeps search_vector in sync on insert/update
+CREATE OR REPLACE FUNCTION contractors_search_vector_update()
+RETURNS trigger AS $$
+BEGIN
+  NEW.search_vector :=
+    to_tsvector('english'::regconfig,
+      coalesce(NEW.name, '')        || ' ' ||
+      coalesce(NEW.trade, '')       || ' ' ||
+      coalesce(NEW.description, '') || ' ' ||
+      coalesce(array_to_string(NEW.specialties, ' '), '')
+    );
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER contractors_search_vector_trigger
+  BEFORE INSERT OR UPDATE ON contractors
+  FOR EACH ROW EXECUTE FUNCTION contractors_search_vector_update();
 
 -- Indexes
 CREATE INDEX idx_contractors_trade    ON contractors (trade);
