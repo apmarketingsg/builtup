@@ -133,8 +133,24 @@ BuiltUp solves this by being the go-to directory for Singapore homeowners to fin
 | `is_featured` | BOOLEAN | Show in featured strip |
 | `is_active` | BOOLEAN | Soft-delete / visibility toggle |
 
-**Trade categories at launch:**
-Plumber, Electrician, Painter, Aircon Servicing, Carpenter, Tiler, Renovation Contractor, Waterproofing, Handyman, Locksmith
+**Trade categories at launch (14):**
+
+| Value | Label | Covers |
+|---|---|---|
+| `plumber` | Plumber | Pipes, water heater, toilet fittings, basin installation |
+| `electrician` | Electrician | Cable runs, power points, lighting, DB box |
+| `aircon` | Aircon | Installation, servicing, chemical wash, gas top-up |
+| `painting` | Painting | Interior/exterior repaint, texture coating, feature walls |
+| `carpentry` | Carpentry | Built-in wardrobes, kitchen cabinets, TV console, study desk |
+| `flooring` | Flooring | Vinyl overlay, parquet, laminate, timber strips |
+| `tiling` | Tiling | Bathroom/kitchen retiling, mosaic, screed |
+| `windows` | Windows & Grilles | Aluminium frames, glass replacement, window grilles, shower screens |
+| `doors` | Doors | Timber doors, fire-rated doors, HDB gates, digital lock gates |
+| `curtains` | Curtains & Blinds | Curtain tracks, roller blinds, roman blinds, day/night blinds |
+| `waterproofing` | Waterproofing | Wet area membrane, flat roof coating, balcony sealing, crack injection |
+| `handyman` | Handyman | Furniture assembly, minor repairs, lock install, curtain rod fitting |
+| `cleaning` | Cleaning | Post-renovation cleaning, regular home cleaning, move-in/out cleaning |
+| `movers` | Movers | Home moving, furniture disposal, storage |
 
 ---
 
