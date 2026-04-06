@@ -23,7 +23,8 @@ export default function Footer() {
               <li><Link href="/contractors?trade=plumber" className="hover:text-white transition-colors">Plumbers</Link></li>
               <li><Link href="/contractors?trade=electrician" className="hover:text-white transition-colors">Electricians</Link></li>
               <li><Link href="/contractors?trade=aircon" className="hover:text-white transition-colors">Aircon Servicing</Link></li>
-              <li><Link href="/contractors?trade=renovation" className="hover:text-white transition-colors">Renovation</Link></li>
+              <li><Link href="/contractors?trade=painting" className="hover:text-white transition-colors">Painting</Link></li>
+              <li><Link href="/contractors?trade=carpentry" className="hover:text-white transition-colors">Carpentry</Link></li>
             </ul>
           </div>
 
