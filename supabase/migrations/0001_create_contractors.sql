@@ -22,7 +22,7 @@ CREATE TABLE contractors (
   updated_at    TIMESTAMPTZ NOT NULL DEFAULT now(),
   -- Generated full-text search column (do not insert into this column directly)
   search_vector TSVECTOR GENERATED ALWAYS AS (
-    to_tsvector('english',
+    to_tsvector('english'::regconfig,
       coalesce(name, '') || ' ' ||
       coalesce(trade, '') || ' ' ||
       coalesce(description, '') || ' ' ||
