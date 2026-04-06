@@ -50,7 +50,7 @@ export const MOCK_CONTRACTORS: Contractor[] = [
     id: '4',
     slug: 'perfect-finish-painting',
     name: 'Perfect Finish Painting',
-    trade: 'painter',
+    trade: 'painting',
     specialties: ['HDB repainting', 'Texture coating', 'Waterproof painting', 'Feature walls'],
     description:
       'Professional painting contractor specialising in HDB and condo interior and exterior repaint. No drips, no mess — just a perfect finish every time.',
@@ -64,7 +64,7 @@ export const MOCK_CONTRACTORS: Contractor[] = [
     id: '5',
     slug: 'solid-wood-carpentry',
     name: 'Solid Wood Carpentry',
-    trade: 'carpenter',
+    trade: 'carpentry',
     specialties: ['Built-in wardrobe', 'Kitchen cabinet', 'TV console', 'Study desk'],
     description:
       'Custom carpentry and joinery for your home. From built-in wardrobes to full kitchen cabinets, we craft furniture that fits perfectly and lasts for years.',
@@ -107,7 +107,7 @@ export const MOCK_CONTRACTORS: Contractor[] = [
     id: '8',
     slug: 'master-key-locksmith',
     name: 'Master Key Locksmith',
-    trade: 'locksmith',
+    trade: 'handyman',
     specialties: ['Digital lock installation', 'Gate lock replacement', 'Emergency lockout', 'Rekey service'],
     description:
       '24/7 locksmith service across Singapore. Specialists in digital smart locks, gate locks, and emergency lockout assistance. Response within 30 minutes.',
