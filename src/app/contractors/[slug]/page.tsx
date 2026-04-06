@@ -54,10 +54,26 @@ export async function generateMetadata({
   if (!contractor) return {}
 
   const trade = TRADES.find((t) => t.value === contractor.trade)
+  const title = `${contractor.name} — ${trade?.label ?? contractor.trade}`
+  const description = contractor.description?.slice(0, 155) ?? undefined
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://builtup.sg'
+  const pageUrl = `${siteUrl}/contractors/${slug}`
 
   return {
-    title: `${contractor.name} — ${trade?.label ?? contractor.trade} | BuiltUp`,
-    description: contractor.description?.slice(0, 155) ?? undefined,
+    title,
+    description,
+    alternates: { canonical: pageUrl },
+    openGraph: {
+      title,
+      description,
+      url: pageUrl,
+      type: 'profile',
+    },
+    twitter: {
+      card: 'summary',
+      title,
+      description,
+    },
   }
 }
 
